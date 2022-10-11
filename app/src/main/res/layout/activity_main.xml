@@ -7,7 +7,7 @@
     tools:context=".ui.activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recyclerView"
+        android:id="@+id/activity_main_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -17,5 +17,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
         tools:listitem="@layout/recipe_item"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/activity_main_efab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:icon="@drawable/ic_action_add"
+        android:text="@string/new_recipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

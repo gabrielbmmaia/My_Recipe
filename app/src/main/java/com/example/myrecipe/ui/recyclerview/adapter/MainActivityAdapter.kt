@@ -10,9 +10,10 @@ import com.example.myrecipe.ui.extensions.tryLoadImage
 import com.example.myrecipe.ui.model.Recipe
 
 class MainActivityAdapter(
+    recipe: List<Recipe> = emptyList()
 ) : RecyclerView.Adapter<MainActivityAdapter.ViewHolder>() {
 
-    private val recipeList = mutableListOf<Recipe>()
+    private val recipeList = recipe.toMutableList()
 
     inner class ViewHolder(private val binding: RecipeItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -28,7 +29,7 @@ class MainActivityAdapter(
             } else {
                 View.GONE
             }
-            recipeImagem.visibility = visibility
+            recipeImagem.visibility
         }
     }
 
