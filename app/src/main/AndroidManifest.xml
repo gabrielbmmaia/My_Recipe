@@ -13,7 +13,7 @@
         android:theme="@style/Theme.MyRecipe"
         tools:targetApi="31">
 
-
+        <activity android:name=".ui.activity.DetalhesRecipeActivity"/>
         <activity android:name=".ui.activity.FormularioRecipeActivity"/>
         <activity
             android:name=".ui.activity.MainActivity"

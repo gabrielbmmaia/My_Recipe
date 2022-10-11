@@ -19,4 +19,10 @@ interface RecipeDao {
 
     @Delete
     suspend fun deleteRecipe(recipe: Recipe)
+
+//    @Query("SELECT * FROM Recipe")
+//    suspend fun list(): List<Recipe>
+
+    @Query("SELECT * FROM Recipe WHERE id = :id")
+    fun searchId(id: Long): Flow<Recipe?>
 }

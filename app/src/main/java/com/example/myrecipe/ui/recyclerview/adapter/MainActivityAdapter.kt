@@ -10,26 +10,30 @@ import com.example.myrecipe.ui.extensions.tryLoadImage
 import com.example.myrecipe.ui.model.Recipe
 
 class MainActivityAdapter(
-    recipe: List<Recipe> = emptyList()
+    var onClickItem: (recipe: Recipe) -> Unit = {}
 ) : RecyclerView.Adapter<MainActivityAdapter.ViewHolder>() {
 
-    private val recipeList = recipe.toMutableList()
+    private val recipeList = mutableListOf<Recipe>()
 
     inner class ViewHolder(private val binding: RecipeItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        private lateinit var recipe: Recipe
+
+        init{
+            itemView.setOnClickListener {
+                if (::recipe.isInitialized) {
+                    onClickItem(recipe)
+                }
+            }
+        }
 
         fun bind(recipe: Recipe) {
             val recipeTitulo = binding.recyclerviewListRecipeTitulo
             val recipeImagem = binding.recyclerviewListRecipeImagem
             recipeTitulo.text = recipe.titulo
             recipeImagem.tryLoadImage(recipe.imagemUrl)
-
-            val visibility = if (recipe.imagemUrl != null) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-            recipeImagem.visibility
+            this.recipe = recipe
         }
     }
 

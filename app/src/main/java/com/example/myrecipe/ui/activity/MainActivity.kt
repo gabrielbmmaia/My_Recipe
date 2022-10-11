@@ -5,10 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecipe.databinding.ActivityMainBinding
 import com.example.myrecipe.ui.database.AppDatabase
 import com.example.myrecipe.ui.recyclerview.adapter.MainActivityAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun configuracaoEfab(){
+    private fun configuracaoEfab() {
         binding.activityMainEfab.setOnClickListener {
             Intent(this, FormularioRecipeActivity::class.java)
                 .apply {
@@ -49,5 +54,12 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = binding.activityMainRecyclerView
         recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = this.adapter
+        adapter.onClickItem = {
+            Intent(this, DetalhesRecipeActivity::class.java)
+                .apply {
+                    putExtra(CHAVE_RECIPE, it.id)
+                    startActivity(this)
+                }
+        }
     }
 }

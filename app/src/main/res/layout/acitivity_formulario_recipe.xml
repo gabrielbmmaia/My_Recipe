@@ -18,7 +18,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            app:srcCompat="@drawable/fallback_image"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/formulario_recipe_InputLayout_titulo"
@@ -57,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
+                android:ems="10"
                 android:inputType="textMultiLine"
                 android:minLines="4"
                 android:maxLines="8"

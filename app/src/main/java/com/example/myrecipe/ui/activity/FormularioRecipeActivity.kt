@@ -1,7 +1,6 @@
 package com.example.myrecipe.ui.activity
 
 import android.os.Bundle
-import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myrecipe.R
@@ -52,3 +51,4 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
         )
     }
 }
+
