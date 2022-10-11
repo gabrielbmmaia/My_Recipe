@@ -16,6 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
-        tools:listitem="@layout/recyclerview_list_recipe"/>
+        tools:listitem="@layout/recipe_item"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

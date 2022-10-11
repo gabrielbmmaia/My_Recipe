@@ -3,8 +3,10 @@ package com.example.myrecipe.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myrecipe.R
+import com.example.myrecipe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
 
 
 
