@@ -35,7 +35,7 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
             recipeDao.searchId(recipeId).collect {
                 it?.let {
                     preencherCampos(it)
-                    title = "Editando ${it.titulo}"
+                    title = it.titulo
                     binding.formularioRecipeBotaoSalvar.text = "Editar"
                 }
             }
