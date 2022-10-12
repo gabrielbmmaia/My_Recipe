@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario_recipe) {
 
-    private val recipeId = 0L
+    private var recipeId = 0L
     private val url: String? = null
     private val binding by lazy {
         AcitivityFormularioRecipeBinding.inflate(layoutInflater)
@@ -24,8 +24,22 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        configurarBotaoSalvar()
         title = "Nova Receita"
+        configurarBotaoSalvar()
+        pegarRecipe()
+        tentaCarregarProduto()
+    }
+
+    private fun tentaCarregarProduto() {
+        lifecycleScope.launch {
+            recipeDao.searchId(recipeId).collect {
+                it?.let {
+                    preencherCampos(it)
+                    title = "Editando ${it.titulo}"
+                    binding.formularioRecipeBotaoSalvar.text = "Editar"
+                }
+            }
+        }
     }
 
     private fun configurarBotaoSalvar() {
@@ -35,6 +49,18 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
                 finish()
             }
         }
+    }
+
+    private fun pegarRecipe() {
+        intent.getLongExtra(CHAVE_RECIPE, 0L).also {
+            recipeId = it
+        }
+    }
+
+    private fun preencherCampos(recipe: Recipe) {
+        binding.formularioRecipeEditTextTitulo.setText(recipe.titulo)
+        binding.formularioRecipeEditTextIngredientes.setText(recipe.ingrediente)
+        binding.formularioRecipeEditTextPreparo.setText(recipe.preparo)
     }
 
     private fun novaReceita(): Recipe {

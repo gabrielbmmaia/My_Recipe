@@ -10,7 +10,8 @@ import com.example.myrecipe.ui.extensions.tryLoadImage
 import com.example.myrecipe.ui.model.Recipe
 
 class MainActivityAdapter(
-    var onClickItem: (recipe: Recipe) -> Unit = {}
+    var onClickItem: (recipe: Recipe) -> Unit = {},
+    var onLongClickItem: (recipe: Recipe) -> Unit = {}
 ) : RecyclerView.Adapter<MainActivityAdapter.ViewHolder>() {
 
     private val recipeList = mutableListOf<Recipe>()
@@ -20,11 +21,17 @@ class MainActivityAdapter(
 
         private lateinit var recipe: Recipe
 
-        init{
+        init {
             itemView.setOnClickListener {
                 if (::recipe.isInitialized) {
                     onClickItem(recipe)
                 }
+            }
+            itemView.setOnLongClickListener {
+                if (::recipe.isInitialized) {
+                    onLongClickItem(recipe)
+                }
+                true
             }
         }
 

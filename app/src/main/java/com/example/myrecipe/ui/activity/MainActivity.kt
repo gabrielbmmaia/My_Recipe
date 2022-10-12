@@ -61,5 +61,12 @@ class MainActivity : AppCompatActivity() {
                     startActivity(this)
                 }
         }
+        adapter.onLongClickItem = {
+            Intent(this, FormularioRecipeActivity::class.java)
+                .apply {
+                    putExtra(CHAVE_RECIPE, it.id)
+                    startActivity(this)
+                }
+        }
     }
 }

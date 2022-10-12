@@ -1,5 +1,6 @@
 package com.example.myrecipe.ui.activity
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -52,5 +53,4 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
             detalhesActivityPreparoText.text = recipe.preparo
         }
     }
-
 }

@@ -53,6 +53,7 @@
             android:layout_margin="16dp"
             android:background="@drawable/shape_textview_border"
             android:textSize="16sp"
+            android:justificationMode="inter_word"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detalhes_activity_ingredientes_tag"
@@ -79,12 +80,12 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/shape_textview_border"
             android:textSize="16sp"
+            android:justificationMode="inter_word"
             app:layout_constraintEnd_toEndOf="@+id/detalhes_activity_ingredientes_text"
             app:layout_constraintStart_toStartOf="@+id/detalhes_activity_ingredientes_text"
             app:layout_constraintTop_toBottomOf="@+id/detalhes_activity_preparo_tag"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="@tools:sample/lorem[50]" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
