@@ -1,6 +1,5 @@
 package com.example.myrecipe.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -11,7 +10,6 @@ import com.example.myrecipe.ui.dialog.FormularioDialog
 import com.example.myrecipe.ui.extensions.tryLoadImage
 import com.example.myrecipe.ui.model.Recipe
 import kotlinx.coroutines.launch
-
 
 class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario_recipe) {
 
@@ -30,7 +28,7 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
         title = "Nova Receita"
         configurarBotaoSalvar()
         pegarRecipe()
-        tentaCarregarProduto()
+        tentaCarregarRecipe()
         alterarImagem()
     }
 
@@ -43,7 +41,7 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
         }
     }
 
-    private fun tentaCarregarProduto() {
+    private fun tentaCarregarRecipe() {
         lifecycleScope.launch {
             recipeDao.searchId(recipeId).collect {
                 it?.let {
@@ -72,9 +70,11 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
     }
 
     private fun preencherCampos(recipe: Recipe) {
+        this.url = recipe.imagemUrl
         binding.formularioRecipeEditTextTitulo.setText(recipe.titulo)
         binding.formularioRecipeEditTextIngredientes.setText(recipe.ingrediente)
         binding.formularioRecipeEditTextPreparo.setText(recipe.preparo)
+        binding.formularioAcitvityRecipeImagem.tryLoadImage(recipe.imagemUrl)
     }
 
     private fun novaReceita(): Recipe {

@@ -2,7 +2,6 @@ package com.example.myrecipe.ui.recyclerview.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecipe.databinding.RecipeItemBinding
@@ -36,11 +35,17 @@ class MainActivityAdapter(
         }
 
         fun bind(recipe: Recipe) {
+            this.recipe = recipe
             val recipeTitulo = binding.recyclerviewListRecipeTitulo
             val recipeImagem = binding.recyclerviewListRecipeImagem
-            recipeTitulo.text = recipe.titulo
+            recipeTitulo.text =
+                if (recipe.titulo.isBlank()) {
+                    "Sem Título"
+                }
+                else recipe.titulo
+
             recipeImagem.tryLoadImage(recipe.imagemUrl)
-            this.recipe = recipe
+
         }
     }
 

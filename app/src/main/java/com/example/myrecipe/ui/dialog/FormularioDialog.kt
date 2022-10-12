@@ -29,7 +29,6 @@ class FormularioDialog(private val context: Context) {
                 url = binding.dialogFormularioEditText.text.toString()
                 url?.let { carregarImagem(it) }
             }.setNegativeButton("Cancelar") { _, _ ->
-
             }.show()
     }
 }
