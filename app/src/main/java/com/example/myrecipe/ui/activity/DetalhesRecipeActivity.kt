@@ -1,6 +1,5 @@
 package com.example.myrecipe.ui.activity
 
-import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -9,13 +8,11 @@ import com.example.myrecipe.databinding.ActivityDetalhesRecipeBinding
 import com.example.myrecipe.ui.database.AppDatabase
 import com.example.myrecipe.ui.extensions.tryLoadImage
 import com.example.myrecipe.ui.model.Recipe
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_recipe) {
 
     private var recipeId: Long = 0L
-    private var recipe: Recipe? = null
     private val binding by lazy {
         ActivityDetalhesRecipeBinding.inflate(layoutInflater)
     }

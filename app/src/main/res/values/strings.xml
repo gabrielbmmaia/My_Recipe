@@ -5,4 +5,6 @@
     <string name="ingredientes">Ingredientes</string>
     <string name="modo_de_preparo">Modo de Preparo</string>
     <string name="nova_receita">Nova Receita</string>
+    <string name="load">load</string>
+    <string name="url_da_imagem">Url da Imagem</string>
 </resources>
