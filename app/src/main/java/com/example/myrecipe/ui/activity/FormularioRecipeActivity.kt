@@ -1,5 +1,6 @@
 package com.example.myrecipe.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -60,7 +61,8 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
         binding.formularioRecipeBotaoSalvar.setOnClickListener {
             lifecycleScope.launch {
                 recipeDao.addRecipe(novaReceita())
-                finish()
+                val intent = Intent(this@FormularioRecipeActivity, MainActivity::class.java)
+                startActivity(intent)
             }
         }
     }

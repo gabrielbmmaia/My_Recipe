@@ -31,7 +31,7 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.detalhes_recipe_menu, menu)
+        menuInflater.inflate(R.menu.menu_detalhes_recipe, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -62,12 +62,10 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
     private fun tentaCarregarRecipe() {
         lifecycleScope.launch {
             recipeDao.searchId(recipeId).collect {
-                it?.let {
-                    preencherCampos(it)
-                    title.apply {
-                        if (it.titulo.isBlank()) title = "Sem Título"
-                        else title = it.titulo
-                    }
+                it?.let { recipe ->
+                    preencherCampos(recipe)
+                    if (recipe.titulo.isBlank()) title = "Sem Título"
+                    else title = recipe.titulo
                 } ?: finish()
             }
         }

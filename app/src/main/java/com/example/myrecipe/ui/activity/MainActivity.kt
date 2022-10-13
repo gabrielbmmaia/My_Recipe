@@ -4,18 +4,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myrecipe.R
 import com.example.myrecipe.databinding.ActivityMainBinding
 import com.example.myrecipe.ui.database.AppDatabase
 import com.example.myrecipe.ui.recyclerview.adapter.MainActivityAdapter
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private val adapter = MainActivityAdapter()
     private val binding by lazy {
@@ -31,6 +34,33 @@ class MainActivity : AppCompatActivity() {
         configuracaoRecyclerView()
         atualizaTela()
         configuracaoEfab()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main_activity, menu)
+        val search = menu?.findItem(R.id.menu_main_acitvity_search)
+        val searchView = search?.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean = true
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        query?.let {
+            searchDatabase(query)
+        }
+        return true
+    }
+
+    private fun searchDatabase(query: String?) {
+        val searchQuery = "%$query%"
+        lifecycleScope.launch {
+            recipeDao.searchMenu(searchQuery).collect {
+                adapter.refresh(it)
+            }
+        }
     }
 
     private fun atualizaTela() {
