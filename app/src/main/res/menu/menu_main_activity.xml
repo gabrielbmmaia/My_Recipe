@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <item
         android:id="@+id/menu_main_acitvity_search"
-        android:title="@string/pesquisar"
         android:icon="@drawable/ic_search"
-        app:showAsAction="ifRoom"
-        android:iconTint="@color/white"
+        android:title="@string/pesquisar"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        tools:targetApi="o" />
-
+        app:showAsAction="ifRoom" />
 </menu>

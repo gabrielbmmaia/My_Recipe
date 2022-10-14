@@ -12,6 +12,7 @@ import com.example.myrecipe.databinding.ActivityDetalhesRecipeBinding
 import com.example.myrecipe.ui.database.AppDatabase
 import com.example.myrecipe.ui.extensions.tryLoadImage
 import com.example.myrecipe.ui.model.Recipe
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -37,7 +38,6 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
         tentaCarregarRecipe()
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_detalhes_recipe, menu)
         return super.onCreateOptionsMenu(menu)
@@ -46,17 +46,17 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_detalhes_recipe_remover -> {
-                AlertDialog.Builder(this)
-                    .setTitle("Realmente deseja apagar?")
-                    .setPositiveButton("Confirmar") { _, _ ->
+                MaterialAlertDialogBuilder(this@DetalhesRecipeActivity)
+                    .setTitle("Apagar Receita?")
+                    .setPositiveButton("Apagar"){_,_ ->
                         lifecycleScope.launch {
                             recipeDao.searchId(recipeId).collect { recipe ->
                                 recipe?.let { recipeDao.deleteRecipe(it) }
                                 finish()
                             }
                         }
-                    }.setNegativeButton("Cancelar") { _, _ -> }
-                    .show()
+                    }.setNegativeButton("Cancelar"){ _,_ ->
+                    }.show()
             }
             R.id.menu_detalhes_recipe_editar -> {
                 Intent(this, FormularioRecipeActivity::class.java).apply {

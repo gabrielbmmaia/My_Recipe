@@ -3,22 +3,16 @@ package com.example.myrecipe.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import androidx.appcompat.app.ActionBar
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.SupportActionModeWrapper
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
-import androidx.recyclerview.widget.RecyclerView
 import com.example.myrecipe.R
 import com.example.myrecipe.databinding.ActivityMainBinding
 import com.example.myrecipe.ui.database.AppDatabase
 import com.example.myrecipe.ui.recyclerview.adapter.MainActivityAdapter
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import java.util.*
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 

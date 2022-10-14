@@ -12,5 +12,6 @@ data class Recipe(
     var titulo: String,
     val ingrediente: String,
     val preparo: String,
+    val categoria: String,
     val imagemUrl: String? = null
 ) : Parcelable

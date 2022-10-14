@@ -20,8 +20,8 @@ interface RecipeDao {
     @Delete
     suspend fun deleteRecipe(recipe: Recipe)
 
-    @Query("SELECT * FROM Recipe WHERE titulo LIKE :titulo")
-    fun searchMenu (titulo: String): Flow<List<Recipe>>
+    @Query("SELECT * FROM Recipe WHERE titulo LIKE :titulo OR categoria LIKE :titulo")
+    fun searchMenu(titulo: String): Flow<List<Recipe>>
 
     @Query("SELECT * FROM Recipe WHERE id = :id")
     fun searchId(id: Long): Flow<Recipe?>

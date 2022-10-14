@@ -2,6 +2,7 @@ package com.example.myrecipe.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myrecipe.R
@@ -16,6 +17,7 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
 
     private var recipeId = 0L
     private var url: String? = null
+    private var categoria: String? = null
     private val binding by lazy {
         AcitivityFormularioRecipeBinding.inflate(layoutInflater)
     }
@@ -30,6 +32,7 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
         pegarRecipe()
         tentaCarregarRecipe()
         alterarImagem()
+        alterarCategoria()
     }
 
     fun alterarImagem() {
@@ -37,6 +40,15 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
             FormularioDialog(this).alterarImagem(url) { imagem ->
                 this.url = imagem
                 binding.formularioAcitvityRecipeImagem.tryLoadImage(url)
+            }
+        }
+    }
+
+    private fun alterarCategoria() {
+        binding.formularioActivityBotaoCategoria.setOnClickListener {
+            FormularioDialog(this).alterarCategoria { categoriaCarregada ->
+                this.categoria = categoriaCarregada
+                Log.i("TesteCategoria", "alterarCategoria: $categoriaCarregada")
             }
         }
     }
@@ -78,13 +90,15 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
         val campoIngredientes = binding.formularioRecipeEditTextIngredientes.text.toString()
         val campoPreparo = binding.formularioRecipeEditTextPreparo.text.toString()
         binding.formularioAcitvityRecipeImagem.tryLoadImage(url)
+        val campoCategoria = categoria ?: "Outros"
 
         return Recipe(
             id = recipeId,
             titulo = campoTitulo,
             ingrediente = campoIngredientes,
             preparo = campoPreparo,
-            imagemUrl = url
+            imagemUrl = url,
+            categoria = campoCategoria
         )
     }
 }
