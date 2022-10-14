@@ -5,8 +5,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-<!--    <color name="black">#FF000000</color>-->
-<!--    <color name="white">#FFFFFFFF</color>-->
+
 
     <color name="water">#C8E7F5</color>
     <color name="little_boy_blue">#67A3D9</color>
@@ -15,4 +14,11 @@
     <color name="little_girl_pink">#F8B7CD</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="white_pink">#FFF3FA</color>
+    <color name="white_blue">#E6F0FF</color>
+    
+    <color name="shrine_pink_100">#FED8D0</color>
+    <color name="shrine_pink_900">#442C2E</color>
+    <color name="shrine_pink_50">#FEEAE6</color>
 </resources>

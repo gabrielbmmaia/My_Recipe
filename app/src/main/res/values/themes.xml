@@ -1,18 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.MyRecipe" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+     Base application theme.
+    <style name="Theme.MyRecipe" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/little_boy_blue</item>
-        <item name="colorPrimaryVariant">@color/spanish_blue</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/shrine_pink_100</item>
+        <item name="colorPrimaryVariant">@color/shrine_pink_100</item>
+        <item name="colorOnPrimary">@color/shrine_pink_900</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/pale_pink</item>
-        <item name="colorSecondaryVariant">@color/little_girl_pink</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/shrine_pink_900</item>
+        <item name="colorSecondaryVariant">@color/shrine_pink_50</item>
+        <item name="colorOnSecondary">@color/shrine_pink_900</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
-        <item name ="android:fontFamily">@font/nunito_sans_semibold</item>
+        <item name ="android:fontFamily">@font/rubik</item>
+    </style>
+
+    <style name="Theme.MyRecipe.ActionBar" parent="Theme.MyRecipe">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
     </style>
 
 </resources>

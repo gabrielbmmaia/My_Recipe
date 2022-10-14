@@ -3,5 +3,6 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/nunito_sans_bold</item>
         <item>@font/nunito_sans_semibold</item>
+        <item>@font/rubik</item>
     </array>
 </resources>

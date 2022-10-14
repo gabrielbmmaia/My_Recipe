@@ -26,7 +26,6 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        title = "Nova Receita"
         configurarBotaoSalvar()
         pegarRecipe()
         tentaCarregarRecipe()
@@ -44,14 +43,9 @@ class FormularioRecipeActivity : AppCompatActivity(R.layout.acitivity_formulario
 
     private fun tentaCarregarRecipe() {
         lifecycleScope.launch {
-            recipeDao.searchId(recipeId).collect {
-                it?.let {
+            recipeDao.searchId(recipeId).collect { recipe ->
+                recipe?.let {
                     preencherCampos(it)
-                    title.apply {
-                        if (it.titulo.isBlank()) title = "Sem Título"
-                        else title = it.titulo
-                    }
-                    binding.formularioRecipeBotaoSalvar.text = "Editar"
                 }
             }
         }

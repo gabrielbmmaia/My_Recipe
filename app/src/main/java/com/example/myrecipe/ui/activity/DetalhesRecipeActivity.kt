@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myrecipe.R
@@ -11,7 +12,9 @@ import com.example.myrecipe.databinding.ActivityDetalhesRecipeBinding
 import com.example.myrecipe.ui.database.AppDatabase
 import com.example.myrecipe.ui.extensions.tryLoadImage
 import com.example.myrecipe.ui.model.Recipe
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_recipe) {
 
@@ -22,13 +25,18 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
     private val recipeDao by lazy {
         AppDatabase.instance(this).recipeDao()
     }
+    private val toolbar by lazy {
+        binding.detalhesToolbar
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setSupportActionBar(toolbar)
         recebeRecipe()
         tentaCarregarRecipe()
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_detalhes_recipe, menu)
@@ -38,12 +46,17 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_detalhes_recipe_remover -> {
-                lifecycleScope.launch {
-                    recipeDao.searchId(recipeId).collect {
-                        it?.let { recipeDao.deleteRecipe(it) }
-                        finish()
-                    }
-                }
+                AlertDialog.Builder(this)
+                    .setTitle("Realmente deseja apagar?")
+                    .setPositiveButton("Confirmar") { _, _ ->
+                        lifecycleScope.launch {
+                            recipeDao.searchId(recipeId).collect { recipe ->
+                                recipe?.let { recipeDao.deleteRecipe(it) }
+                                finish()
+                            }
+                        }
+                    }.setNegativeButton("Cancelar") { _, _ -> }
+                    .show()
             }
             R.id.menu_detalhes_recipe_editar -> {
                 Intent(this, FormularioRecipeActivity::class.java).apply {
@@ -61,11 +74,13 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
 
     private fun tentaCarregarRecipe() {
         lifecycleScope.launch {
-            recipeDao.searchId(recipeId).collect {
-                it?.let { recipe ->
-                    preencherCampos(recipe)
-                    if (recipe.titulo.isBlank()) title = "Sem Título"
-                    else title = recipe.titulo
+            recipeDao.searchId(recipeId).collect { recipe ->
+                recipe?.let { receitaCarregada ->
+                    preencherCampos(receitaCarregada)
+                    withContext(Dispatchers.Main) {
+                        toolbar.title = receitaCarregada.titulo
+                    }
+//                    toolbar.title = it.titulo
                 } ?: finish()
             }
         }
@@ -74,7 +89,6 @@ class DetalhesRecipeActivity : AppCompatActivity(R.layout.activity_detalhes_reci
     private fun preencherCampos(recipe: Recipe) {
         with(binding) {
             detalhesActivityImagem.tryLoadImage(recipe.imagemUrl)
-            detalhesActivityTitulo.text = recipe.titulo
             detalhesActivityIngredientesText.text = recipe.ingrediente
             detalhesActivityPreparoText.text = recipe.preparo
         }

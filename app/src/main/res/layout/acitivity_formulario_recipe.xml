@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/shrine_pink_50"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +19,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/fallback_image"
-            />
+            app:srcCompat="@drawable/fallback_image" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/formulario_recipe_InputLayout_titulo"
@@ -30,15 +30,13 @@
             android:hint="@string/receita"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formulario_acitvity_recipe_imagem"
-            app:startIconDrawable="@drawable/ic_outline_loyalty_24">
+            app:layout_constraintTop_toBottomOf="@+id/formulario_acitvity_recipe_imagem">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/formulario_recipe_EditText_titulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
-                android:isScrollContainer="true"
                 android:textSize="18sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,14 +56,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
-                android:ems="10"
                 android:inputType="textMultiLine"
                 android:minLines="4"
-                android:maxLines="8"
-                android:overScrollMode="always"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:scrollbars="vertical"
-                android:scrollbarStyle="insideInset"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,10 +78,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="top"
                 android:inputType="textMultiLine"
-                android:lines="4"
-                android:maxLines="8"
-                android:overScrollMode="always"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:minLines="4"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,13 +88,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="adicionar"
+            android:textStyle="bold"
+            android:text="Salvar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/formulario_recipe_InputLayout_preparo"
             app:layout_constraintVertical_bias="1" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 
