@@ -26,10 +26,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textStyle="bold"
             android:text="Categoria"
-            app:layout_constraintTop_toBottomOf="@+id/formulario_acitvity_recipe_imagem"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/formulario_acitvity_recipe_imagem" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/formulario_recipe_InputLayout_titulo"
@@ -38,6 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="@string/receita"
+            app:boxStrokeColor="@color/shrine_pink_900"
+            app:hintTextColor="@color/shrine_pink_900"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/formulario_activity_botao_categoria">
@@ -57,6 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/ingredientes"
+            app:boxStrokeColor="@color/shrine_pink_900"
+            app:hintTextColor="@color/shrine_pink_900"
             app:layout_constraintEnd_toEndOf="@+id/formulario_recipe_InputLayout_titulo"
             app:layout_constraintStart_toStartOf="@+id/formulario_recipe_InputLayout_titulo"
             app:layout_constraintTop_toBottomOf="@+id/formulario_recipe_InputLayout_titulo">
@@ -78,6 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/modo_de_preparo"
+            app:boxStrokeColor="@color/shrine_pink_900"
+            app:hintTextColor="@color/shrine_pink_900"
             app:layout_constraintEnd_toEndOf="@+id/formulario_recipe_InputLayout_titulo"
             app:layout_constraintStart_toStartOf="@+id/formulario_recipe_InputLayout_titulo"
             app:layout_constraintTop_toBottomOf="@+id/formulario_recipe_InputLayout_ingredientes">
@@ -98,8 +104,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textStyle="bold"
             android:text="Salvar"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

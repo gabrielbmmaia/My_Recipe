@@ -36,6 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="@string/url_da_imagem"
+            app:boxStrokeColor="@color/shrine_pink_900"
+            app:hintTextColor="@color/shrine_pink_900"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dialog_formulario_button">
