@@ -24,6 +24,7 @@ Abrir receitas para ver o conteúdo delas<br>
 `ViewBinding`: fazer binding de views. <br>
 `Flow`: fazer atualizações da tela em tempo real. <br>
 `Courutines`: usado para acessar o banco de dados em uma thread adicional. <br>
+`Git`: usado para versionar o código no github
 
 ## 🛠️ Abrir e rodar o projeto
 Após baixar o projeto, você pode abrir com o Android Studio. Para isso, na tela de launcher clique em:
