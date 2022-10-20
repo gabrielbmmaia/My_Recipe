@@ -1,16 +1,17 @@
 # My_Recipe
 
-#### App de listas de receitas adicionadas por você
+#### App de listas de receitas adicionadas por você!
 
 ![imagem layouts](https://user-images.githubusercontent.com/109977155/195956914-71787c94-3f1a-4ff3-b121-cffed5cd69bc.png)
 
 
 ## 🔨 Funcionalidades do projeto
-Criar Receitas<br>
-Editar Receitas<br>
-Deletar Receitas<br>
-Pesquisar por receitas pelo nome ou categoria<br>
-Abrir receitas para ver o conteúdo delas<br>
+
+`Criar Receitas` <br>
+`Editar Receitas` <br>
+`Deletar Receitas` <br>
+`Pesquisar por receitas pelo nome ou categoria` <br>
+`Abrir receitas para ver o conteúdo delas` <br>
 
 
 ## ✔️ Técnicas e tecnologias utilizadas
