@@ -24,6 +24,7 @@ Abrir receitas para ver o conteúdo delas<br>
 `ViewBinding`: fazer binding de views. <br>
 `Flow`: fazer atualizações da tela em tempo real. <br>
 `Courutines`: usado para acessar o banco de dados em uma thread adicional. <br>
+`Coil`: usado para carregar imagens por http <br>
 `Git`: usado para versionar o código no github
 
 ## 🛠️ Abrir e rodar o projeto
